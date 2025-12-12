@@ -25,7 +25,7 @@ type IRCSettings struct {
 	Channel             string   `env:"IRC_CHANNEL,required" validate:"notempty"`
 	ChannelKey          string   `env:"IRC_CHANNEL_KEY" envDefault:""`
 	BotIdent            string   `env:"IRC_BOT_IDENT,required" envDefault:"teleirc"`
-	BotName             string   `env:"IRC_BOT_REALNAME" envDefault:"Powered by TeleIRC <github.com/RITlug/teleirc>"`
+	BotName             string   `env:"IRC_BOT_REALNAME" envDefault:"Powered by TeleIRC <github.com/rubensadev/teleirc>"`
 	BotNick             string   `env:"IRC_BOT_NAME,required" validate:"notempty"`
 	SendStickerEmoji    bool     `env:"IRC_SEND_STICKER_EMOJI" envDefault:"true"`
 	SendDocument        bool     `env:"IRC_SEND_DOCUMENT" envDefault:"true"`

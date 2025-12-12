@@ -1,7 +1,7 @@
 TeleIRC
 =======
 
-<a href="https://github.com/RITlug/teleirc"><img src="/assets/svg/horizontal_color.svg" alt="TeleIRC logo by Ura Design" width="60%" height="auto"></a>
+<a href="https://github.com/rubensadev/teleirc"><img src="/assets/svg/horizontal_color.svg" alt="TeleIRC logo by Ura Design" width="60%" height="auto"></a>
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![CircleCI](https://circleci.com/gh/RITlug/teleirc/tree/main.svg?style=shielf)](https://circleci.com/gh/RITlug/teleirc/tree/main)

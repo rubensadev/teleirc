@@ -8,7 +8,7 @@ import (
 
 	gomock "github.com/golang/mock/gomock"
 	girc "github.com/lrstanley/girc"
-	internal "github.com/ritlug/teleirc/internal"
+	internal "github.com/rubensadev/teleirc/internal"
 )
 
 // MockClientInterface is a mock of ClientInterface interface

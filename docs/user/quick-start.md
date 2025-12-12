@@ -163,7 +163,7 @@ Check your distribution documentation for more info on how to install these pack
 
 This section is only required if you are building a binary from source:
 
-1. Clone repository (`git clone https://github.com/RITlug/teleirc.git`)
+1. Clone repository (`git clone https://github.com/rubensadev/teleirc.git`)
 1. Enter repository (`cd teleirc/`)
 1. Build binary (`./build_binary.sh`)
 
@@ -204,7 +204,7 @@ It uses `v2.3.0` as a default:
 
 ```sh
 # Download TeleIRC deployment assets from GitHub.
-$ curl --location --output ~/teleirc https://github.com/RITlug/teleirc/releases/download/v2.3.0/teleirc-2.3.0-linux-x86_64
+$ curl --location --output ~/teleirc https://github.com/rubensadev/teleirc/releases/download/v2.3.0/teleirc-2.3.0-linux-x86_64
 $ curl --location --output ~/teleirc.sysusers https://raw.githubusercontent.com/RITlug/teleirc/v2.3.0/deployments/systemd/teleirc.sysusers
 $ curl --location --output ~/teleirc.tmpfiles https://raw.githubusercontent.com/RITlug/teleirc/v2.3.0/deployments/systemd/teleirc.tmpfiles
 $ curl --location --output ~/teleirc@.service https://raw.githubusercontent.com/RITlug/teleirc/v2.3.0/deployments/systemd/teleirc@.service
@@ -242,13 +242,13 @@ service named teleirc@FILENAME.service.
 [5]: /en/latest/user/faq/
 [6]: https://web.archive.org/web/20200515153553/http://toxin.jottit.com/freenode_chanserv_commands
 [7]: https://imgur.com/
-[8]: https://github.com/RITlug/teleirc/issues/115
+[8]: https://github.com/rubensadev/teleirc/issues/115
 [9]: https://api.imgur.com/oauth2/addclient
 [10]: https://github.com/joho/godotenv
 [11]: config-file-glossary
-[12]: https://github.com/RITlug/teleirc/issues/new/choose
+[12]: https://github.com/rubensadev/teleirc/issues/new/choose
 [13]: https://raw.githubusercontent.com/RITlug/teleirc/master/deployments/container/Dockerfile
-[14]: https://github.com/RITlug/teleirc/releases
-[15]: https://github.com/RITlug/teleirc/blob/master/deployments/systemd/teleirc@.service
+[14]: https://github.com/rubensadev/teleirc/releases
+[15]: https://github.com/rubensadev/teleirc/blob/master/deployments/systemd/teleirc@.service
 [16]: https://systemd.io/
 [17]: https://github.com/jwflory/ansible-role-teleirc

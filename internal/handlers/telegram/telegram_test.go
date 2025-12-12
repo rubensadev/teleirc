@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
-	"github.com/ritlug/teleirc/internal"
+	"github.com/rubensadev/teleirc/internal"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -67,7 +67,7 @@ Bot settings
 
 .. CAUTION:: Required setting (cannot be empty)
 
-``IRC_BOT_REALNAME="Powered by TeleIRC <github.com/RITlug/teleirc>"``
+``IRC_BOT_REALNAME="Powered by TeleIRC <github.com/rubensadev/teleirc>"``
     IRC ``REALNAME`` for bot.
     Often visible in IRC ``/whois`` reports, but most clients do not show this information by default.
 
@@ -101,7 +101,7 @@ Message settings
     Send emojis associated with a sticker to IRC (when a Telegram user sends a sticker)
 
 ``IRC_SEND_DOCUMENT=true``
-    Send documents and files from Telegram to IRC (`why is this true by default? <https://github.com/RITlug/teleirc/issues/115>`_)
+    Send documents and files from Telegram to IRC (`why is this true by default? <https://github.com/rubensadev/teleirc/issues/115>`_)
 
 ``IRC_EDITED_PREFIX="[EDIT] "``
     Prefix to prepend to messages when a user edits a Telegram message and it is resent to IRC

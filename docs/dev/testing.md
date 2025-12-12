@@ -162,7 +162,7 @@ So, to generate a mock from the previous interface, we would run the following c
 $ GO111MODULE=on go get github.com/golang/mock/mockgen@latest
 $ mockgen -source=./internal/handlers/irc.go
 # OR
-$ mockgen github.com/ritlug/teleirc/internal/handlers/irc IRCClient
+$ mockgen github.com/rubensadev/teleirc/internal/handlers/irc IRCClient
 ```
 
 Now, we could write the following code in a unit test:
