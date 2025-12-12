@@ -2,7 +2,7 @@ package irc
 
 import (
 	"github.com/lrstanley/girc"
-	"github.com/ritlug/teleirc/internal"
+	"github.com/rubensadev/teleirc/internal"
 )
 
 /*

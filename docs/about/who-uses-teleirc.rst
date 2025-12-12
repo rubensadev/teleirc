@@ -65,7 +65,7 @@ The following projects and communities use a v1.x.x release of RITlug TeleIRC:
 
 - `RITlug <https://ritlug.com>`_ (`@ritlug <https://t.me/ritlug>`_ | `#rit-lug <https://webchat.freenode.net/?channels=rit-lug>`_)
 
-  - `RITlug teleirc <https://github.com/RITlug/teleirc>`_ (`@teleirc <https://t.me/teleirc>`_ | `#rit-lug-teleirc <https://webchat.freenode.net/?channels=rit-lug-teleirc>`_)
+  - `RITlug teleirc <https://github.com/rubensadev/teleirc>`_ (`@teleirc <https://t.me/teleirc>`_ | `#rit-lug-teleirc <https://webchat.freenode.net/?channels=rit-lug-teleirc>`_)
 
 
 ***********************
@@ -74,7 +74,7 @@ How to get on this list
 
 Want to have your community added to this page?
 Let us know you are using TeleIRC too!
-`Open an issue <https://github.com/RITlug/teleirc/issues/new>`_ with the following info:
+`Open an issue <https://github.com/rubensadev/teleirc/issues/new>`_ with the following info:
 
 -  Organization / group name and website
 -  Telegram group URL

@@ -64,7 +64,7 @@ All TeleIRC documentation is licensed under the `Creative Commons Attribution-Sh
 Indices and tables
 ******************
 
-* `github.com/RITlug/teleirc <https://github.com/RITlug/teleirc>`_
+* `github.com/rubensadev/teleirc <https://github.com/rubensadev/teleirc>`_
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`

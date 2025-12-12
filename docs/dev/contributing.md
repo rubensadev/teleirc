@@ -10,7 +10,7 @@ This guide explains how to contribute to the TeleIRC project.
 It defines working practices of the development team.
 This document helps new contributors start working on the project.
 It is a living document and will change.
-If you think something could be better, please [open an issue](https://github.com/RITlug/teleirc/issues/new/choose) with your feedback.
+If you think something could be better, please [open an issue](https://github.com/rubensadev/teleirc/issues/new/choose) with your feedback.
 
 
 ## Table of contents

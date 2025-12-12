@@ -7,7 +7,7 @@ import (
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 	"github.com/kyokomi/emoji"
-	"github.com/ritlug/teleirc/internal"
+	"github.com/rubensadev/teleirc/internal"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -622,9 +622,9 @@ func TestMessageRandomWithUsername(t *testing.T) {
 
 	clientObj := &Client{
 		Settings: &internal.TelegramSettings{
-			Prefix: "<",
-			Suffix: ">",
-			ChatID: 100,
+			Prefix:  "<",
+			Suffix:  ">",
+			ChatIDs: []int64{100},
 		},
 		IRCSettings: &internal.IRCSettings{
 			ShowZWSP: false,
@@ -659,9 +659,9 @@ func TestMessageRandomWithoutUsername(t *testing.T) {
 	}
 	clientObj := &Client{
 		Settings: &internal.TelegramSettings{
-			Prefix: "<",
-			Suffix: ">",
-			ChatID: 100,
+			Prefix:  "<",
+			Suffix:  ">",
+			ChatIDs: []int64{100},
 		},
 		IRCSettings: &internal.IRCSettings{
 			ShowZWSP: false,
@@ -694,9 +694,9 @@ func TestMessageRandomWithNoForward(t *testing.T) {
 	}
 	clientObj := &Client{
 		Settings: &internal.TelegramSettings{
-			Prefix: "<",
-			Suffix: ">",
-			ChatID: 100,
+			Prefix:  "<",
+			Suffix:  ">",
+			ChatIDs: []int64{100},
 		},
 		IRCSettings: &internal.IRCSettings{
 			ShowZWSP:        false,
@@ -731,9 +731,9 @@ func TestMessageZwsp(t *testing.T) {
 	}
 	clientObj := &Client{
 		Settings: &internal.TelegramSettings{
-			Prefix: "<",
-			Suffix: ">",
-			ChatID: 100,
+			Prefix:  "<",
+			Suffix:  ">",
+			ChatIDs: []int64{100},
 		},
 		IRCSettings: &internal.IRCSettings{
 			ShowZWSP: true,
@@ -851,7 +851,7 @@ func TestMessageReply(t *testing.T) {
 					ReplyPrefix: "[",
 					ReplySuffix: "]",
 					ReplyLength: 15,
-					ChatID:      100,
+					ChatIDs:     []int64{100},
 				},
 				IRCSettings: &internal.IRCSettings{
 					ShowZWSP: false,
@@ -903,7 +903,7 @@ func TestMessageReplyZwsp(t *testing.T) {
 			ReplyPrefix: "[",
 			ReplySuffix: "]",
 			ReplyLength: 15,
-			ChatID:      100,
+			ChatIDs:     []int64{100},
 		},
 		IRCSettings: &internal.IRCSettings{
 			ShowZWSP: true,
@@ -936,9 +936,9 @@ func TestMessageFromWrongTelegramChat(t *testing.T) {
 	}
 	clientObj := &Client{
 		Settings: &internal.TelegramSettings{
-			Prefix: "<",
-			Suffix: ">",
-			ChatID: 101,
+			Prefix:  "<",
+			Suffix:  ">",
+			ChatIDs: []int64{101},
 		},
 		IRCSettings: &internal.IRCSettings{
 			ShowZWSP: true,
@@ -949,6 +949,90 @@ func TestMessageFromWrongTelegramChat(t *testing.T) {
 	}
 
 	messageHandler(clientObj, updateObj)
+}
+
+func TestMessageFromValidMultipleChats(t *testing.T) {
+	testUser := &tgbotapi.User{
+		FirstName: "test",
+	}
+	testChat1 := &tgbotapi.Chat{
+		ID: 100,
+	}
+	testChat2 := &tgbotapi.Chat{
+		ID: 101,
+	}
+	testChat3 := &tgbotapi.Chat{
+		ID: 102,
+	}
+
+	// Test message from first chat
+	updateObj1 := tgbotapi.Update{
+		Message: &tgbotapi.Message{
+			From: testUser,
+			Text: "Random Text",
+			Chat: testChat1,
+		},
+	}
+	clientObj := &Client{
+		Settings: &internal.TelegramSettings{
+			Prefix:  "<",
+			Suffix:  ">",
+			ChatIDs: []int64{100, 101},
+		},
+		IRCSettings: &internal.IRCSettings{
+			ShowZWSP: false,
+		},
+		sendToIrc: func(s string) {
+			assert.Equal(t, "<test> Random Text", s)
+		},
+	}
+	messageHandler(clientObj, updateObj1)
+
+	// Test message from second chat
+	updateObj2 := tgbotapi.Update{
+		Message: &tgbotapi.Message{
+			From: testUser,
+			Text: "Another Text",
+			Chat: testChat2,
+		},
+	}
+	clientObj2 := &Client{
+		Settings: &internal.TelegramSettings{
+			Prefix:  "<",
+			Suffix:  ">",
+			ChatIDs: []int64{100, 101},
+		},
+		IRCSettings: &internal.IRCSettings{
+			ShowZWSP: false,
+		},
+		sendToIrc: func(s string) {
+			assert.Equal(t, "<test> Another Text", s)
+		},
+	}
+	messageHandler(clientObj2, updateObj2)
+
+	// Test message from invalid chat should not be forwarded
+	updateObj3 := tgbotapi.Update{
+		Message: &tgbotapi.Message{
+			From: testUser,
+			Text: "Invalid Text",
+			Chat: testChat3,
+		},
+	}
+	clientObjInvalid := &Client{
+		Settings: &internal.TelegramSettings{
+			Prefix:  "<",
+			Suffix:  ">",
+			ChatIDs: []int64{100, 101},
+		},
+		IRCSettings: &internal.IRCSettings{
+			ShowZWSP: false,
+		},
+		sendToIrc: func(s string) {
+			assert.Fail(t, "Should not forward from invalid chat")
+		},
+	}
+	messageHandler(clientObjInvalid, updateObj3)
 }
 
 func TestLocationHandlerWithLocationEnabled(t *testing.T) {
