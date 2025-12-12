@@ -25,7 +25,7 @@ type IRCSettings struct {
 	Channel             string   `env:"IRC_CHANNEL,required" validate:"notempty"`
 	ChannelKey          string   `env:"IRC_CHANNEL_KEY" envDefault:""`
 	BotIdent            string   `env:"IRC_BOT_IDENT,required" envDefault:"teleirc"`
-	BotName             string   `env:"IRC_BOT_REALNAME" envDefault:"Powered by TeleIRC <github.com/RITlug/teleirc>"`
+	BotName             string   `env:"IRC_BOT_REALNAME" envDefault:"Powered by TeleIRC <github.com/rubensadev/teleirc>"`
 	BotNick             string   `env:"IRC_BOT_NAME,required" validate:"notempty"`
 	SendStickerEmoji    bool     `env:"IRC_SEND_STICKER_EMOJI" envDefault:"true"`
 	SendDocument        bool     `env:"IRC_SEND_DOCUMENT" envDefault:"true"`
@@ -49,7 +49,7 @@ type IRCSettings struct {
 // TelegramSettings includes settings related to the Telegram bot/message relaying
 type TelegramSettings struct {
 	Token                 string   `env:"TELEIRC_TOKEN,required"`
-	ChatID                int64    `env:"TELEGRAM_CHAT_ID,required"`
+	ChatIDs               []int64  `env:"TELEGRAM_CHAT_ID,required"`
 	Prefix                string   `env:"TELEGRAM_MESSAGE_PREFIX" envDefault:"<"`
 	Suffix                string   `env:"TELEGRAM_MESSAGE_SUFFIX" envDefault:">"`
 	ReplyPrefix           string   `env:"TELEGRAM_MESSAGE_REPLY_PREFIX" envDefault:"["`
@@ -137,8 +137,10 @@ func LoadConfig(path string) (*Settings, error) {
 	}
 	// Attempt to load environment variables from path if path was provided
 	if path != ".env" && path != "" {
-		if err := godotenv.Load(path); err != nil {
-			return nil, err
+		if _, err := os.Stat(path); !os.IsNotExist(err) {
+			if err := godotenv.Load(path); err != nil {
+				return nil, err
+			}
 		}
 	} else if _, err := os.Stat(defaultPath); !os.IsNotExist(err) {
 		// Attempt to load from defaultPath if defaultPath exists
@@ -156,6 +158,10 @@ func LoadConfig(path string) (*Settings, error) {
 			fieldErrs = append(fieldErrs, errs)
 		}
 		return nil, fieldErrs
+	}
+
+	if len(settings.Telegram.ChatIDs) < 1 {
+		return nil, fmt.Errorf("TELEGRAM_CHAT_ID must contain at least one chat ID")
 	}
 
 	settings.IRC.IRCBlacklist = splitEnvVar(settings.IRC.IRCBlacklist)

@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/lrstanley/girc"
-	"github.com/ritlug/teleirc/internal"
+	"github.com/rubensadev/teleirc/internal"
 	"github.com/stretchr/testify/assert"
 )
 

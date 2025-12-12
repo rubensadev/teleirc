@@ -8,9 +8,9 @@ import (
 	"syscall"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
-	"github.com/ritlug/teleirc/internal"
-	"github.com/ritlug/teleirc/internal/handlers/irc"
-	tg "github.com/ritlug/teleirc/internal/handlers/telegram"
+	"github.com/rubensadev/teleirc/internal"
+	"github.com/rubensadev/teleirc/internal/handlers/irc"
+	tg "github.com/rubensadev/teleirc/internal/handlers/telegram"
 )
 
 var (
